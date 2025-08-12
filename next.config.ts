@@ -1,16 +1,15 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
-  /* config options here */
+const nextConfig = {
+  output: 'export',
+  // Add this line to correctly handle asset paths on GitHub Pages.
+  basePath: '/aidantanwebportfolio', 
 
-  output: 'export', 
-    images: {
-    unoptimized: true, // This disables the server-side image optimizer
+  // If you're using the next/image component, ensure this line is also present
+  // to make it work with static exports.
+  images: {
+    unoptimized: true,
   },
 };
 
-module.exports = {
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/aidantanwebportfolio' : '',
-  basePath: process.env.NODE_ENV === 'production' ? '/aidantanwebportfolio' : '',
-}
 export default nextConfig;
