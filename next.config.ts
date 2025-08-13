@@ -1,8 +1,8 @@
 import type { NextConfig } from "next";
 
-export const nextConfig: NextConfig = {
+const nextConfig: NextConfig = {
   /* config options here */
   basePath: '/aidantanwebportfolio',
 };
 
-module.exports = nextConfig;
+export default nextConfig;
