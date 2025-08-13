@@ -5,4 +5,8 @@ const nextConfig: NextConfig = {
   basePath: '/aidantanwebportfolio',
 };
 
-module.exports = nextConfig;
+const isProd = process.env.NODE_ENV === 'production';
+
+module.exports = { basePath: isProd ? '/aidantanwebportfolio' : '', assetPrefix: isProd ? '/aidantanwebportfolio/' : '', images: { unoptimized: true, }, };
+
+// module.exports = nextConfig;
