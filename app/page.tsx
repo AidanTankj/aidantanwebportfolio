@@ -90,7 +90,7 @@ export default function Home() {
         >
           <Image
             aria-hidden
-            src= { `${process.env.NEXT_PUBLIC_BASE_PATH}/globe.svg` }
+            src= "/globe.svg"
             alt="Globe icon"
             width={16}
             height={16}
