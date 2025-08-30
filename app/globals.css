@@ -1,26 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Lora:wght@400;700&family=Open+Sans:wght@400;600;700&family=Permanent+Marker&display=swap');
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+section {
+    padding: 8rem 0; 
+    opacity: 100; 
+    transition: opacity 0.6s ease-out;
+    position: relative; 
+    overflow: hidden; 
+}
+section.is-visible {
+    opacity: 1;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; 
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Open Sans', sans-serif; 
+    background-color: #FDFDFD; 
+    color: #4A4A4A; 
 }
+
+/* Page Container */
+.page-container {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    /* overflow: hidden; */ /* Keep this commented out as per previous steps */
+}
+
+.page-face {
+    position: absolute;
+    width: 100%;
+    height: 100%; /* Takes 100% of page-container's 100vh */
+    top: 0;
+    left: 0;
+    overflow-y: auto; /* This is where the internal scrollbar will appear */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    transition: opacity 0.5s ease-in-out; /* Smooth fade for page content */
+    z-index: 1; /* Ensure main content is above fox button (default) */
+}
+
+#portfolio-main h1, #portfolio-main h2, #portfolio-main h3, #portfolio-main h4, #portfolio-main h5, #portfolio-main h6 {
+    font-family: 'Lora', serif;
+}
+
+.text-highlight { color: hsl(28, 100%, 55%); } 
+.bg-highlight { background-color: hsl(28, 100%, 55%); }
+.border-highlight { border-color: hsl(28, 100%, 55%); }
+
+
+.outlined-text {
+  color: transparent;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: rgb(255, 60, 0);
+  font-size: 4rem; /* For demonstration */
+  font-weight: bold;
+}
+
+/* Custom scrollbar for a cleaner look */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #F0F0F0;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: #D0D0D0;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #B0B0B0;
+}
+
+/* Keyframes for subtle animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Apply animations */
+.animate-fade-in {
+    animation: fadeIn 1s ease-out forwards;
+    opacity: 0; /* Start invisible */
+}
+.animate-slide-in-left {
+    animation: slideInLeft 1s ease-out forwards;
+    opacity: 0;
+}
+.animate-slide-in-right {
+    animation: slideInRight 1s ease-out forwards;
+    opacity: 0;
+}
+.animate-scale-in {
+    animation: scaleIn 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+/* Delay animations for sequential appearance */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
+.delay-700 { animation-delay: 0.7s; }
+.delay-800 { animation-delay: 0.8s; }
+.delay-900 { animation-delay: 0.9s; }
+.delay-1000 { animation-delay: 1s; }
+
+
+.project-card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+}
+
+
+.section-divider {
+    width: 80px;
+    height: 2px;
+    background-color: #D0D0D0;
+    margin: 2rem auto 4rem auto;
+    border-radius: 2px;
+}
+
+/* Responsive adjustments for layout */
+@media (min-width: 768px) {
+    .hero-content {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+    .hero-text {
+        text-align: left;
+        margin-right: 1rem;
+    }
+    .hero-image {
+        margin-left: 4rem;
+    }
+}
+
+
+@keyframes pulse-slow {
+    0%, 100% { opacity: 0.1; }
+    50% { opacity: 0.15; }
+}
+.animate-pulse-slow {
+    animation: pulse-slow 8s infinite ease-in-out;
+}
+
+/* Header Styles */
+.header-transparent {
+    background-color: rgb(255, 255, 255); /* Fully transparent white */
+    box-shadow:#4A4A4A;
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border-bottom: solid thin rgb(255, 199, 143); /* Subtle bottom border */
+}
+
+.header-scrolled {
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly opaque white */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* Subtle shadow */
+    backdrop-filter: blur(5px); /* Add blur effect */
+}
+
+
+/* Fox Button Styling */
+#fox-button {
+    position: fixed; /* Fixed position relative to viewport */
+    width: 60px;
+    height: 60px;
+    top: -20px; 
+    right: 15px; 
+    font-size: 3rem; /* Size emoji */
+    cursor: pointer;
+    z-index: 50; /* Ensure it's above other content */
+    
+    /* ANIMATION */
+    transition: all 0.3s ease-in-out; 
+    
+    /* Base rotation and origin as starting point */
+    transform: rotate(180deg); /* Rotate 180 degrees */
+
+    
+    padding: 0px;
+    background-color: rgba(255, 255, 255, 0);
+    border-top-right-radius: 15px; /* Rounded corner */
+    border-top-left-radius: 15px; /* Rounded corner */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0); /* Subtle shadow */
+    line-height: 1; /* Prevent extra space around emoji */
+    display: flex; /* Use flex to center the emoji */
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto; /* Ensure it's clickable */
+    overflow: hidden;
+}
+
+#fox-button:hover {
+    right: 15px; /* Slide into view */
+    top: -5px; /* Bring to top edge */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15); /* shadow on hover */
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly less transparent on hover */
+}
+
+/* Adjust header padding to avoid overlap with fox button (if needed, based on final fox size) */
+@media (min-width: 768px) {
+    #main-header nav ul { /* Target the ul directly for padding */
+        padding-right: 80px; /* Add padding to make space for the fox button */
+    }
+}
+
+@media (min-width: 546px) {
+    #main-header nav ul { /* Target the ul directly for padding */
+        padding-right: 40px; /* Add padding to make space for the fox button */
+    }
+}
+
+@media (max-width: 545px) {
+    #main-header nav ul { /* Target the ul directly for padding */
+        
+        padding-left: 80px;
+    }
+}
+
+@media (max-width: 485px) {
+    #main-header nav ul { /* Target the ul directly for padding */
+        
+        padding-left: 40px;
+    }
+}
+
+/* Sticky Header */
+#main-header {
+    position: sticky; 
+    top: 0; /* Sticks to the top when scrolled */
+    z-index: 50; 
+}
+
+
+
